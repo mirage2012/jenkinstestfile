@@ -13,7 +13,7 @@ pipeline {
                 changeset "indexTemplates.sh"
             }
             steps {
-                sh(./indexTemplates.sh)
+                sh('./indexTemplates.sh')
             }
         }
         stage('Deploy Elastic Roles') {
@@ -21,7 +21,7 @@ pipeline {
                 changeset "elasticRoles.sh"
             }
             steps {
-                sh(./elasticRoles.sh)
+                sh('./elasticRoles.sh')
             }
         }
         stage('Deploy Elastic Role Mappings') { 
@@ -29,7 +29,7 @@ pipeline {
                 changeset "elasticRolemapping.sh"
             }
             steps {
-                sh(./elasticRolemapping.sh)
+                sh('./elasticRolemapping.sh')
             }
         }
     }
