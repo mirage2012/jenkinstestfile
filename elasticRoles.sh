@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-curl -X POST -u ${ELASTIC_USR}:${} "${ELASTIC_PSW}/_security/role/cmp.devops.user.upi" -H 'Content-Type: application/json' -d'
+curl -X POST -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}/_security/role/cmp.devops.user.upi" -H 'Content-Type: application/json' -d'
 {
   "cluster" : [
   ],
