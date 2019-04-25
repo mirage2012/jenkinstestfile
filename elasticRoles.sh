@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Declare an array of string with type
 declare -a Teams=("iot" "devops-data" )
+# Create an elasticsearch Role
 for val in ${Teams[@]}; do
-   curl -X POST -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_security/role/cmp.devops.user.$val" -H 'Content-Type: application/json' -d '
+   curl -X POST -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_xpack/security/role/cmp.devops.user.$val" -H 'Content-Type: application/json' -d '
    {
   "cluster" : [
   ],
@@ -44,5 +45,24 @@ for val in ${Teams[@]}; do
   ]
 }
 '
+#Create Roll mappings for the above roles
+
+curl -X PUT -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_xpack/security/role_mapping/cmp.devops.user.$val" -H 'Content-Type: application/json' -d'
+{
+ "enabled" : true,
+ "roles" : [
+    "cmp.devops.user.'$val'"
+ ],
+ "rules" : {
+    "field" : {
+    "groups" : "cmp.devops.user.$val"
+    }
+ },
+ "metadata" : {
+    "version" : 1
+    }
+ }
+'
+
 done
 
