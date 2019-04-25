@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
-curl -X POST -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_security/role/cmp.devops.user.upi" -H 'Content-Type: application/json' -d'
-{
+#!/usr/bin/env bash
+# Declare an array of string with type
+declare -a Teams=("iot" "devops-data" )
+for val in ${Teams[@]}; do
+   echo curl -X POST -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_security/role/cmp.devops.user.$val" -H 'Content-Type: application/json' -d "
+   {
   "cluster" : [
   ],
   "indices" : [
       {
         "names" : [
-          "log-upi*",
-          "log.upi*"
+          "log-$val*",
+          "log.$val*"
         ],
         "privileges" : [
           "read"
@@ -35,9 +39,10 @@ curl -X POST -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}
         "space_all"
       ],
       "resources" : [
-        "space:upi"
+        "space:$val"
       ]
     }
   ]
 }
-'
+"
+done
