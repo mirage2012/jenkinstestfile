@@ -4,6 +4,20 @@ curl -X POST -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}
   "cluster" : [
   ],
   "indices" : [
+      {
+        "names" : [
+          "log-upi*",
+          "log.upi*"
+        ],
+        "privileges" : [
+          "read"
+        ],
+        "field_security" : {
+          "grant" : [
+            "*"
+          ]
+        }
+      }
   ],
   "applications" : [
     {
@@ -27,4 +41,3 @@ curl -X POST -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}
   ]
 }
 '
-
