@@ -49,7 +49,7 @@ for val in ${Teams[@]}; do
   ]
 }
 '
-echo "Creating role mapping for the Role $val"; echo ""
+echo ""; echo "Creating role mapping for the Role $val"; echo ""
 #Create Roll mappings for the above roles
 
 curl -sX PUT -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_xpack/security/role_mapping/cmp.devops.user.$val" -H 'Content-Type: application/json' -d'
