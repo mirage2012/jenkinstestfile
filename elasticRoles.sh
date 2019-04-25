@@ -27,3 +27,4 @@ curl -X POST -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}
   ]
 }
 '
+
