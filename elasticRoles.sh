@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-#!/usr/bin/env bash
 # Declare an array of string with type
 declare -a Teams=("iot" "devops-data" )
 for val in ${Teams[@]}; do
