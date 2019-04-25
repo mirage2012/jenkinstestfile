@@ -27,3 +27,4 @@ curl -X POST -u ${DEVOPS_ELASTIC_USER}:${DEVOPS_ELASTIC_PASS} "${DEVOPS_ELASTIC}
   ]
 }
 '
+echo $elastic
