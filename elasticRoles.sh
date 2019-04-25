@@ -4,7 +4,7 @@ if [[ ${Cluster} == devone ]]
 then 
   username=${ELASTIC_USR}
   password=${ELASTIC_PSW}
-elif [[${Cluster} == tstone ]] 
+elif [[ ${Cluster} == tsttwo ]] 
 then
   username=${ELASTIC_TST}
   password=${ELASTIC_TST}
