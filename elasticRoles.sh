@@ -55,7 +55,7 @@ curl -X PUT -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/
  ],
  "rules" : {
     "field" : {
-    "groups" : "cmp.devops.user.$val"
+    "groups" : "cmp.devops.user.'$val'"
     }
  },
  "metadata" : {
