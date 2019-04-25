@@ -82,3 +82,4 @@ echo curl -sX PUT -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_
 echo ""; printf -- '-%.0s' {1..100}; echo ""
 done
 echo " We are all done!"
+
