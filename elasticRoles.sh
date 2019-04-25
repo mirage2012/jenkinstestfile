@@ -49,7 +49,6 @@ for val in ${Teams[@]}; do
   ]
 }
 '
-echo ""; printf -- '-%.0s' {1..100}; echo ""
 echo "Creating role mapping for the Role $val"; echo ""
 #Create Roll mappings for the above roles
 
