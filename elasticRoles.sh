@@ -2,15 +2,15 @@
 # Declare an array of string with type
 declare -a Teams=("iot" "devops-data" )
 for val in ${Teams[@]}; do
-   curl -X POST -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_security/role/cmp.devops.user.$val" -H 'Content-Type: application/json' -d "
+  echo curl -X POST -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_security/role/cmp.devops.user.$val" -H 'Content-Type: application/json' -d '
    {
   "cluster" : [
   ],
   "indices" : [
       {
         "names" : [
-          "log-$val*",
-          "log.$val*"
+          "log-'$val'*",
+          "log.'$val'*"
         ],
         "privileges" : [
           "read"
@@ -38,11 +38,11 @@ for val in ${Teams[@]}; do
         "space_all"
       ],
       "resources" : [
-        "space:$val"
+        "space:'$val'"
       ]
     }
   ]
 }
-"
+'
 done
 
