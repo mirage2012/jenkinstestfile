@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 set +e
+if [ ${Cluster} == devone ]
+then 
+  username=${ELASTIC_USR}
+  password=${ELASTIC_PSW}
+elif [${Cluster} == devone ]  
+then
+  username=${ELASTIC_TST}
+  password=${ELASTIC_TST}
+ fi 
 
 # Declare an array of string with type
 declare -a Teams=("iot" "devops-data" )
@@ -9,7 +18,7 @@ for val in ${Teams[@]}; do
  
  echo "Creating the Role $val" ; echo ""
 
-   curl -sX POST -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_xpack/security/role/cmp.devops.user.$val" -H 'Content-Type: application/json' -d '
+   echo curl -sX POST -u ${username}:${password} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_xpack/security/role/cmp.devops.user.$val" -H 'Content-Type: application/json' -d '
    {
   "cluster" : [
   ],
@@ -54,7 +63,7 @@ for val in ${Teams[@]}; do
 echo ""; echo "Creating role mapping for the Role $val"; echo ""
 #Create Roll mappings for the above roles
 
-curl -sX PUT -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_xpack/security/role_mapping/cmp.devops.user.$val" -H 'Content-Type: application/json' -d'
+echo curl -sX PUT -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_xpack/security/role_mapping/cmp.devops.user.$val" -H 'Content-Type: application/json' -d'
 {
  "enabled" : true,
  "roles" : [
