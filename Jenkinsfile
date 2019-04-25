@@ -6,7 +6,9 @@ pipeline {
         timeout(time:10, unit: 'MINUTES')
         disableConcurrentBuilds()
     }
-    
+    environment {
+        ELASTIC = credentials('elastic')
+    }
     stages {
         stage('Deploy Index Templates') { 
             when {
