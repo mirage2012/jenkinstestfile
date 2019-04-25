@@ -3,6 +3,10 @@
 declare -a Teams=("iot" "devops-data" )
 # Create an elasticsearch Role
 for val in ${Teams[@]}; do
+ echo ""; printf -- '-%.0s' {1..100}; echo ""
+ 
+ echo "Creating the Role $val" ; echo ""
+
    curl -X POST -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_xpack/security/role/cmp.devops.user.$val" -H 'Content-Type: application/json' -d '
    {
   "cluster" : [
@@ -45,7 +49,8 @@ for val in ${Teams[@]}; do
   ]
 }
 '
-echo ""; printf -- '-%.0s' {1..50}; echo ""
+echo ""; printf -- '-%.0s' {1..100}; echo ""
+echo "Creating role mapping for the Role $val"; echo ""
 #Create Roll mappings for the above roles
 
 curl -X PUT -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_xpack/security/role_mapping/cmp.devops.user.$val" -H 'Content-Type: application/json' -d'
@@ -64,6 +69,6 @@ curl -X PUT -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/
     }
  }
 '
-echo ""; printf -- '-%.0s' {1..50}; echo ""
+echo ""; printf -- '-%.0s' {1..100}; echo ""
 done
-
+echo " We are all done!"
