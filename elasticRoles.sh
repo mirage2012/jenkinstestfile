@@ -27,4 +27,3 @@ curl -X POST -u ${ELASTIC_USR}:${} "${ELASTIC_PSW}/_security/role/cmp.devops.use
   ]
 }
 '
-echo $elastic
