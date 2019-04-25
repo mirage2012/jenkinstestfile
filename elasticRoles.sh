@@ -2,7 +2,7 @@
 # Declare an array of string with type
 declare -a Teams=("iot" "devops-data" )
 for val in ${Teams[@]}; do
-   echo curl -X POST -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_security/role/cmp.devops.user.$val" -H 'Content-Type: application/json' -d "
+   curl -X POST -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_security/role/cmp.devops.user.$val" -H 'Content-Type: application/json' -d "
    {
   "cluster" : [
   ],
