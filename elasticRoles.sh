@@ -1,15 +1,5 @@
 #!/usr/bin/env bash
 set +e
-if [[ ${Cluster} == devone ]]
-then 
-  username=${ELASTIC_USR}
-  password=${ELASTIC_PSW}
-elif [[ ${Cluster} == tsttwo ]] 
-then
-  username=${ELASTIC_TST}
-  password=${ELASTIC_TST}
- fi 
-
 # Declare an array of string with type
 declare -a Teams=("iot" "devops-data" )
 # Create an elasticsearch Role
@@ -18,7 +8,7 @@ for val in ${Teams[@]}; do
  
  echo "Creating the Role $val" ; echo ""
 
-   echo curl -sX POST -u ${username}:${password} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_xpack/security/role/cmp.devops.user.$val" -H 'Content-Type: application/json' -d '
+   echo curl -sX POST -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_xpack/security/role/cmp.devops.user.$val" -H 'Content-Type: application/json' -d '
    {
   "cluster" : [
   ],
