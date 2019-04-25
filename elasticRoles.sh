@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set +e
-if [ ${Cluster} == devone ]
+if [ ${Cluster} -eq devone ]
 then 
   username=${ELASTIC_USR}
   password=${ELASTIC_PSW}
-elif [${Cluster} == devone ]  
+elif [${Cluster} == tstone ]  
 then
   username=${ELASTIC_TST}
   password=${ELASTIC_TST}
