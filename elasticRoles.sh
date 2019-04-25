@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set +e
+
 # Declare an array of string with type
 declare -a Teams=("iot" "devops-data" )
 # Create an elasticsearch Role
