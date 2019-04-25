@@ -7,7 +7,7 @@ pipeline {
         disableConcurrentBuilds()
     }
     environment {
-        ELASTIC = credentials('elastic')
+        ELASTIC = credentials('ELASTIC')
     }
     stages {
         stage('Deploy Index Templates') { 
