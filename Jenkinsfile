@@ -9,6 +9,9 @@ pipeline {
     environment {
         ELASTIC = credentials('ELASTIC')
     }
+    parameters {
+                choice(choices: ['devone', 'tsttwo'], description: 'Which Elasticsearch cluster', name: 'Cluster')
+    }
     stages {
         stage('Deploy Index Templates') { 
             when {
