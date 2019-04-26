@@ -59,3 +59,4 @@ echo curl -sX PUT -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_
   }
 '
 
+
