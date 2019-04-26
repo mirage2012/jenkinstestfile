@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set +e
 
-echo curl -sX PUT -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_template/template_1" -H 'Content-Type: application/json' -d '
+curl -sX PUT -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_template/template_1" -H 'Content-Type: application/json' -d '
 {
   	"index_patterns": ["*.kube*"],
 
