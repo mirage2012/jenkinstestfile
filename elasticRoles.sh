@@ -7,9 +7,9 @@ declare -a Teams=("iot" "devops-data" )
 for val in ${Teams[@]}; do
  echo ""; printf -- '-%.0s' {1..100}; echo ""
  
-  "Creating the Role $val" ; echo ""
+  echo "Creating the Role $val" ; echo ""
 
-   echo curl -sX POST -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_xpack/security/role/cmp.devops.user.$val" -H 'Content-Type: application/json' -d '
+   curl -sX POST -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_xpack/security/role/cmp.devops.user.$val" -H 'Content-Type: application/json' -d '
    {
   "cluster" : [
   ],
