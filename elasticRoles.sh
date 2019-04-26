@@ -7,7 +7,7 @@ declare -a Teams=("iot" "devops-data" )
 for val in ${Teams[@]}; do
  echo ""; printf -- '-%.0s' {1..100}; echo ""
  
- echo "Creating the Role $val" ; echo ""
+  "Creating the Role $val" ; echo ""
 
    echo curl -sX POST -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_xpack/security/role/cmp.devops.user.$val" -H 'Content-Type: application/json' -d '
    {
@@ -54,7 +54,7 @@ for val in ${Teams[@]}; do
 echo ""; echo "Creating role mapping for the Role $val"; echo ""
 #Create Roll mappings for the above roles
 
-echo curl -sX PUT -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_xpack/security/role_mapping/cmp.devops.user.$val" -H 'Content-Type: application/json' -d'
+ curl -sX PUT -u ${ELASTIC_USR}:${ELASTIC_PSW} "${DEVOPS_ELASTIC}:${ELASTIC_PORT}/_xpack/security/role_mapping/cmp.devops.user.$val" -H 'Content-Type: application/json' -d'
 {
  "enabled" : true,
  "roles" : [
