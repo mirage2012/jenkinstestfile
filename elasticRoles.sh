@@ -2,7 +2,7 @@
 set +e
 
 # Declare an array of string with type
-declare -a Teams=("iot" "devops-data" )
+declare -a Teams=("iot" "devops-data" "new-team")
 # Create an elasticsearch Role
 for val in ${Teams[@]}; do
  echo ""; printf -- '-%.0s' {1..100}; echo ""
