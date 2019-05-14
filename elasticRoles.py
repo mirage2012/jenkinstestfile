@@ -14,7 +14,7 @@ def role_payload(val):
         "cluster": [],
         "indices": [{
             "names": (
-                "log-{}*".format(val),
+                f'log-{val}*',
                 "log.{}*".format(val)
             ),
             "privileges": [
