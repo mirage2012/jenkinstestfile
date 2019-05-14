@@ -15,7 +15,7 @@ def role_payload(val):
         "indices": [{
             "names": (
                 "log-f'{val}'*",
-                "log.{}*".format(val)
+                "log.f'{val}'*"
             ),
             "privileges": [
                 "read"
