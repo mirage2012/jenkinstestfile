@@ -97,3 +97,5 @@ def elastic(val):
 
 for team in ["impst", "asasas"]:
     elastic(team)
+    
+    
