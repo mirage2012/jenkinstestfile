@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Deploy Elastic Roles') {
             when {
-                changeset "elasticRoles.sh"
+                changeset "elasticRoles.py"
             }
             steps {
                 sh('./elasticRoles.sh')
