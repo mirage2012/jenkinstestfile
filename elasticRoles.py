@@ -85,7 +85,7 @@ def elastic(val):
     response_role = requests.post(url_role, auth=(os.environ.get("ELASTIC_USR"), os.environ.get("ELASTIC_PSW")),
                                   headers={"content-type": "application/json"}, data=json.dumps(role_payload(val)))
     res_role = response_role.json()
-    print("Creating Roll for team {}".format(val), res_role)
+    print("Creating Role for team {}".format(val), res_role)
 
     url_mapping = os.environ.get("DEVOPS_ELASTIC") + ":" + os.environ.get(
         "ELASTIC_PORT") + "/_xpack/security/role_mapping/cmp.devops.user.{}".format(val)
