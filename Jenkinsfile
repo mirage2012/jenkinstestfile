@@ -24,7 +24,7 @@ pipeline {
                 changeset "elasticRoles.py"
             }
             steps {
-                sh('./elasticRoles.sh')
+                sh('./elasticRoles.py')
             }
         }
         stage('Deploy Elastic Role Mappings') { 
