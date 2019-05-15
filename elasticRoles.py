@@ -73,6 +73,20 @@ def mapping_payload(val):
 
     return payload_mapping
 
+def space_payload(val):
+    """
+
+    :param val: val is name of team that need onboarding
+    :return: returns payload for mapping
+    """
+    payload_space = {
+        "id": "{}".format(val),
+        "name": "{}".format(val),
+        "description": "This is the {} Space".format(val),
+    }
+
+    return payload_space
+
 
 def elastic(val):
     """
@@ -85,7 +99,7 @@ def elastic(val):
     response_role = requests.post(url_role, auth=(os.environ.get("ELASTIC_USR"), os.environ.get("ELASTIC_PSW")),
                                   headers={"content-type": "application/json"}, data=json.dumps(role_payload(val)))
     res_role = response_role.json()
-    print("Creating Role for team {}".format(val), res_role)
+    print("Creating Roll for team {}".format(val), res_role)
 
     url_mapping = os.environ.get("DEVOPS_ELASTIC") + ":" + os.environ.get(
         "ELASTIC_PORT") + "/_xpack/security/role_mapping/cmp.devops.user.{}".format(val)
@@ -94,8 +108,13 @@ def elastic(val):
     res_mapping = response_mapping.json()
     print("Creatting role_mapping for team {}".format(val), res_mapping)
 
+    url_space = os.environ.get("DEVOPS_KIBANA") + ":" + os.environ.get(
+        "KIBANA_PORT") + "/api/spaces/space"
+    response_space = requests.post(url_space, auth=(os.environ.get("KIBANA_USR"), os.environ.get("KIBANA_PSW")),
+                                   headers={"content-type":"application/json", "kbn-xsrf": "true"}, data=json.dumps(space_payload(val)))
+    res_space = response_space.json()
+    print("Creatting kibana space for team {}".format(val), res_space)
+
 
 for team in ["impst", "asasas"]:
     elastic(team)
-    
-    
