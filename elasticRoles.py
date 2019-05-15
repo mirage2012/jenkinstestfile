@@ -109,8 +109,8 @@ def elastic(val):
     print("Creatting role_mapping for team {}".format(val), res_mapping)
 
     url_space = os.environ.get("DEVOPS_KIBANA") + ":" + os.environ.get(
-        "KIBANA_PORT") + "/api/spaces/space"
-    response_space = requests.post(url_space, auth=(os.environ.get("KIBANA_USR"), os.environ.get("KIBANA_PSW")),
+        "ELASTIC_PORT") + "/api/spaces/space"
+    response_space = requests.post(url_space, auth=(os.environ.get("ELASTIC_USR"), os.environ.get("ELASTIC_PSW")),
                                    headers={"content-type":"application/json", "kbn-xsrf": "true"}, data=json.dumps(space_payload(val)))
     res_space = response_space.json()
     print("Creatting kibana space for team {}".format(val), res_space)
